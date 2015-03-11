@@ -1,0 +1,114 @@
+@import '../../libs/core/core';
+
+#songs_container
+{
+	$song_height: 56px;
+
+	padding-top: 0;
+	padding-bottom: 0;
+	overflow: hidden;
+
+	&.is-loading
+	{
+		padding-top: 16px;
+		padding-bottom: 16px;
+	}
+
+	.song
+	{
+		min-height: $song_height;
+
+		@extend %clearfix;
+
+		&.open
+		{
+			.spotify-tracks
+			{
+				display: block;
+			}
+		}
+
+		.info
+		{
+			float: left;
+			font-size: .9em;
+		}
+
+		.song-title
+		{
+			display: block;
+			font-weight: bold;
+		}
+
+		.song-checked
+		{
+			display: block;
+			font-size: .9em;
+		}
+
+		.song-status
+		{
+			float: right;
+			margin-right: 6px;
+			padding: 9px 13px 8px;
+		}
+
+		div.song-status
+		{
+			cursor: default;
+		}
+
+		.toolbar
+		{
+			float: right;
+		}
+
+		.main
+		{
+			@extend %clearfix;
+		}
+
+		.spotify-tracks
+		{
+			display: none;
+			margin-top: 5px;
+			font-size: .8em;
+		}
+
+		.play.icon, .pause.icon
+		{
+			font-size: .8em;
+		}
+
+		.spotify-track
+		{
+			margin-bottom: 3px;
+
+			&:last-child
+			{
+				margin-bottom: 0;
+			}
+		}
+
+		.this-is-it-button
+		{
+			padding: 3px 5px 4px;
+			margin-left: 4px;
+		}
+
+		.preview-player
+		{
+			cursor: pointer;
+		}
+
+		.spotify-track-name
+		{
+			color: rgba(0, 0, 0, 0.8);
+		}
+	}
+}
+
+.no-data
+{
+	margin: 16px 0 18px 10px;
+}

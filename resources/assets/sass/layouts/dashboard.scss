@@ -1,0 +1,95 @@
+@import '../libs/semantic';
+@import '../libs/sortable';
+@import '../libs/core/core';
+
+html
+{
+	overflow: -moz-scrollbars-vertical;
+	overflow: scroll;
+}
+
+.clear
+{
+	clear: both;
+}
+
+$header_height: 65px;
+
+#header
+{
+	height: $header_height;
+	line-height: $header_height;
+}
+
+h1
+{
+	margin-top: 0;
+}
+
+#breadcrumb
+{
+	margin-bottom: 14px;
+}
+
+th a
+{
+	color: rgba(0, 0, 0, .8);
+
+	&:hover
+	{
+		color: rgba(0, 0, 0, .8);
+	}
+}
+
+.checkbox-line-break
+{
+	margin: 5px 0;
+}
+
+#player_container
+{
+	display: inline-block;
+	margin-right: 6px;
+
+	@include x-transition(opacity 0.3s linear);
+	@include x-opacity(0);
+
+	&.show
+	{
+		@include x-opacity(1);
+	}
+}
+
+#player_progress
+{
+	$color: #564F8A;
+	$border_radius: 3px;
+
+	width: 100px;
+	height: 24px;
+	background-color: #F7F7F7;
+	border: none;
+
+	&::-webkit-progress-bar
+	{
+		background-color: lightgray;
+
+		@include x-border-radius($border_radius);
+	}
+
+	&::-webkit-progress-value
+	{
+		background-color: $color;
+
+		// Rounded progress bar value
+		@include x-border-radius($border_radius);
+
+		// Straight progress bar value
+		/*-webkit-border-top-left-radius: 3px;
+		-webkit-border-bottom-left-radius: 3px;
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;*/
+	}
+}
+
+@import 'partials/dashboard/image_generation_queue';

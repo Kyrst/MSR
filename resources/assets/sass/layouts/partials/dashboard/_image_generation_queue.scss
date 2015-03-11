@@ -1,0 +1,69 @@
+#image_generation_queue_container
+{
+	margin-top: 18px;
+	max-width: inherit;
+	width: 210px;
+
+	&.loading
+	{
+		#image_generation_queue_refresh_button
+		{
+			cursor: default;
+			color: #CCC;
+
+			$spin_speed: 3000ms;
+
+			@include x-animation(spin $spin_speed infinite linear);
+		}
+	}
+}
+
+@include x-keyframes(spin)
+{
+	0% { @include x-transform(rotate(0deg)) }
+	100% { @include x-transform(rotate(360deg)) }
+}
+
+#image_generation_queue_refresh_button
+{
+	position: absolute;
+	top: 14px;
+	right: 9px;
+	color: #000;
+}
+
+#image_generation_queue
+{
+	margin-top: 10px;
+
+	.image-generation-queue-item
+	{
+		font-size: .9em;
+	}
+
+	.image-generation-queue-item-type, .image-generation-queue-item-reference, .image-generation-queue-item-status-row, .image-generation-queue-item-added-container
+	{
+		display: block;
+	}
+
+	.image-generation-queue-item-reference
+	{
+		margin-bottom: 4px;
+	}
+
+	.image-generation-queue-item-added-container
+	{
+		margin-bottom: 7px;
+	}
+
+	hr
+	{
+		$color: #CCC;
+
+		margin: 12px 0 9px;
+		border: none;
+		background-color: $color;
+		color: $color;
+		height: 1px;
+	}
+}

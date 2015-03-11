@@ -1,0 +1,13 @@
+{
+  "devDependencies":
+  {
+    "gulp": "*",
+    "gulp-compass": "*",
+    "gulp-jshint": "*",
+    "jshint-stylish": "*",
+    "gulp-imagemin": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "*",
+    "gulp-concat": "*"
+  }
+}

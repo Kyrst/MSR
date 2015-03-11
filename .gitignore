@@ -1,0 +1,4 @@
+.idea
+public/libs/bower
+node_modules
+vendor
