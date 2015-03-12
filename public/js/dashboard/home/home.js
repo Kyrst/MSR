@@ -146,13 +146,14 @@ function refresh_songs()
 						players[spotify_track_id] = new buzz.sound($preview_player.data('url'));
 						players[spotify_track_id].load();
 
-						$preview_player.on('click', function()
+						$preview_player.off('click').on('click', function()
 						{
 							var $spotify_track = $(this).closest('.spotify-track'),
 								spotify_track_id = $spotify_track.data('id');
 
 							if ( current_player !== null && current_player.spotify_track_id === spotify_track_id )
 							{
+								console.log('1');
 								if ( current_player.player.isPaused() )
 								{
 									resume_player();
@@ -164,6 +165,7 @@ function refresh_songs()
 							}
 							else
 							{
+								console.log('2');
 								play_track(spotify_track_id);
 							}
 						});
@@ -261,6 +263,13 @@ function play_track(spotify_track_id)
 		//var percent = buzz.toPercent(this.getTime(), this.getDuration());
 		//console.log(percent);
 		//$('#player_progress').val(percent);
+
+		console.log('loading media...');
+	});
+
+	new_player.bind('waiting', function(e)
+	{
+		console.log('waiting for media...');
 	});
 
 	new_player.bind('timeupdate', function(e)
@@ -282,7 +291,43 @@ function play_track(spotify_track_id)
 
 	new_player.bind('error', function(e)
 	{
-		alert('err');
+		alert('Player error');
+		console.log(e);
+	});
+
+	new_player.bind('loadstart', function()
+	{
+		console.log('start loading of player');
+	});
+
+	new_player.bind('abort', function()
+	{
+		console.log('abort player');
+	});
+
+	new_player.bind('canplay', function()
+	{
+		console.log('canplay player');
+	});
+
+	new_player.bind('canplaythrough', function()
+	{
+		console.log('canplaythrough player');
+	});
+
+	new_player.bind('dataunavailable', function()
+	{
+		console.log('dataunavailable player');
+	});
+
+	new_player.bind('seeked', function()
+	{
+		console.log('seeked player');
+	});
+
+	new_player.bind('seeking', function()
+	{
+		console.log('seeking player');
 	});
 
 	$preview_player.html(PAUSE_BUTTON_HTML);
@@ -291,7 +336,7 @@ function play_track(spotify_track_id)
 	$('#player_title').html(title);
 
 	// Start playing new track
-	new_player.play();
+	//new_player.play();
 
 	if ( was_player_open === false )
 	{
