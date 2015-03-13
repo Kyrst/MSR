@@ -162,7 +162,6 @@ function refresh_songs()
 
 							if ( current_player !== null && current_player.spotify_track_id === spotify_track_id )
 							{
-								console.log('1');
 								if ( current_player.player.isPaused() )
 								{
 									resume_player();
@@ -174,7 +173,6 @@ function refresh_songs()
 							}
 							else
 							{
-								console.log('2');
 								play_track(spotify_track_id);
 							}
 						});
@@ -345,7 +343,7 @@ function play_track(spotify_track_id)
 	$('#player_title').html(title);
 
 	// Start playing new track
-	//new_player.play();
+	new_player.play();
 
 	if ( was_player_open === false )
 	{
