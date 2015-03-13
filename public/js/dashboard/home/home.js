@@ -40,7 +40,16 @@ $('#add_song_form').on('submit', function()
 
 					refresh_songs();
 
-					$core.ui.message.success('Song "' + result.data.added_song_title + '" added.');
+					var num_updated_tracks = result.data.updated_tracks.length;
+
+					if ( num_updated_tracks > 0 )
+					{
+						$core.ui.message.success('Song "' + result.data.added_song_title + '" added and found ' + num_updated_tracks + ' track' + (num_updated_tracks !== 1 ? 's' : '') + ' on Spotify.');
+					}
+					else
+					{
+						$core.ui.message.success('Song "' + result.data.added_song_title + '" added, but didn\'t find on Spotify.');
+					}
 				}
 				else
 				{

@@ -65,16 +65,16 @@ class HomeController extends \App\Http\Controllers\DashboardController
 
 	public function update()
 	{
-		$results = [];
+		$updated_tracks = [];
 
 		foreach ( $this->user->songs as $user_song )
 		{
-			$results[] = $user_song->updateTracksOnSpotify();
+			$updated_tracks[] = $user_song->updateTracksOnSpotify();
 		}
 
 		// Have fun with $results...
 
-		//$this->ajax->addData('results', $results);
+		$this->ajax->addData('updated_tracks', $updated_tracks);
 
 		return $this->ajax->output();
 	}

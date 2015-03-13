@@ -124,7 +124,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function getNonFoundSongs()
 	{
-		return $this->songs;
+		return $this->songs()->orderBy('created_at', 'DESC')->get();
 	}
 
 	public static function addSong($user_id, $title, $update_spotify = false)
