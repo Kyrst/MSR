@@ -63,12 +63,7 @@ moment.locale('en',
 $('#header_dropdown').dropdown(
 {
 	transition: 'drop',
-	duration: 125,
-	onChange: function()
-	{
-		$('#header_dropdown').children('.text').html('Updating...');
-		//$('#header_dropdown').dropdown('set text("Updating...")');
-	}
+	duration: 125
 });
 
 var $forms = $('form');
@@ -88,8 +83,12 @@ var $songs_container = $('#songs_container'),
 
 $('#update_button').on('click', function()
 {
+	$('#header_dropdown').children('.text').html('Updating...');
+
 	update_spotify(function()
 	{
+		$('#header_dropdown').children('.text').html('Update');
+		console.log('DONE!');
 	});
 });
 

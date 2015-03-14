@@ -40,16 +40,7 @@ $('#add_song_form').on('submit', function()
 
 					refresh_songs();
 
-					var num_updated_tracks = result.data.updated_tracks.length;
-
-					if ( num_updated_tracks > 0 )
-					{
-						$core.ui.message.success('Song "' + result.data.added_song_title + '" added and found ' + num_updated_tracks + ' track' + (num_updated_tracks !== 1 ? 's' : '') + ' on Spotify.');
-					}
-					else
-					{
-						$core.ui.message.success('Song "' + result.data.added_song_title + '" added, but didn\'t find on Spotify.');
-					}
+					$core.ui.message.success('Song "' + result.data.added_song_title + '" added.');
 				}
 				else
 				{
@@ -155,7 +146,7 @@ function refresh_songs()
 						players[spotify_track_id] = new buzz.sound($preview_player.data('url'));
 						players[spotify_track_id].load();
 
-						$preview_player.off('click').on('click', function()
+						$preview_player.on('click', function()
 						{
 							var $spotify_track = $(this).closest('.spotify-track'),
 								spotify_track_id = $spotify_track.data('id');
@@ -270,13 +261,6 @@ function play_track(spotify_track_id)
 		//var percent = buzz.toPercent(this.getTime(), this.getDuration());
 		//console.log(percent);
 		//$('#player_progress').val(percent);
-
-		console.log('loading media...');
-	});
-
-	new_player.bind('waiting', function(e)
-	{
-		console.log('waiting for media...');
 	});
 
 	new_player.bind('timeupdate', function(e)
@@ -298,43 +282,7 @@ function play_track(spotify_track_id)
 
 	new_player.bind('error', function(e)
 	{
-		alert('Player error');
-		console.log(e);
-	});
-
-	new_player.bind('loadstart', function()
-	{
-		console.log('start loading of player');
-	});
-
-	new_player.bind('abort', function()
-	{
-		console.log('abort player');
-	});
-
-	new_player.bind('canplay', function()
-	{
-		console.log('canplay player');
-	});
-
-	new_player.bind('canplaythrough', function()
-	{
-		console.log('canplaythrough player');
-	});
-
-	new_player.bind('dataunavailable', function()
-	{
-		console.log('dataunavailable player');
-	});
-
-	new_player.bind('seeked', function()
-	{
-		console.log('seeked player');
-	});
-
-	new_player.bind('seeking', function()
-	{
-		console.log('seeking player');
+		alert('err');
 	});
 
 	$preview_player.html(PAUSE_BUTTON_HTML);
