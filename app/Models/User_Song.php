@@ -39,7 +39,7 @@ class User_Song extends \Illuminate\Database\Eloquent\Model
 
 		$minified_title = str_replace
 		(
-			[' - ', '(', ')', ',', '&', '\"', '[', ']', '|'],
+			[' - ', ' — ', '(', ')', ',', '&', '\"', '[', ']', '|'],
 			' ',
 			$this->title
 		);
