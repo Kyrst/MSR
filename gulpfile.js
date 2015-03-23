@@ -5,7 +5,8 @@ var gulp = require('gulp'),
 	imagemin = require('gulp-imagemin'),
 	uglify = require('gulp-uglify'),
 	util = require('gulp-util'),
-	concat = require('gulp-concat');
+	concat = require('gulp-concat'),
+	notify = require("gulp-notify");
 
 var PUBLIC_DIR = 'public/',
 	RESOURCES_DIR = 'resources/',
@@ -14,19 +15,6 @@ var PUBLIC_DIR = 'public/',
 	CSS_DIR = PUBLIC_DIR + 'css/',
 	JS_DIR = PUBLIC_DIR + 'js/',
 	IMAGES_DIR = PUBLIC_DIR + 'images/';
-
-/*var assets = require('./assets.json');
-
-var libraries = [];
-
-for ( var library_name in assets.libraries )
-{
-	var library_data = assets.libraries[library_name];
-
-	console.log(library_data);
-}
-
-console.log('-----------------');*/
 
 gulp.task('compass', function()
 {
@@ -43,7 +31,8 @@ gulp.task('compass', function()
 
 			this.emit('end');
 		})
-		.pipe(gulp.dest(CSS_DIR));
+		.pipe(gulp.dest(CSS_DIR))
+		.pipe(notify('Compass/SASS generated!'));
 });
 
 gulp.task('lint', function()
@@ -80,7 +69,8 @@ gulp.task('uglify', function()
 {
 	gulp.src(ASSETS_DIR + 'js/**/*.js')
 		//.pipe(uglify().on('error', util.log))
-		.pipe(gulp.dest(JS_DIR));
+		.pipe(gulp.dest(JS_DIR))
+		.pipe(notify('JS minified!'));
 });
 
 gulp.task('imagemin', function()

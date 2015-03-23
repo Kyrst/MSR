@@ -8,6 +8,7 @@
     "gulp-imagemin": "*",
     "gulp-uglify": "*",
     "gulp-util": "*",
-    "gulp-concat": "*"
+    "gulp-concat": "*",
+    "gulp-notify": "*"
   }
 }
